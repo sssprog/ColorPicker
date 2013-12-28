@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.sssprog.colorpicker.ColorPickerLeftView
+            android:id="@+id/cp_leftView"
+            android:layerType="software"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/cp_hue_cursor_padding"/>
+
+        <com.sssprog.colorpicker.ColorPickerHueView
+            android:id="@+id/cp_hueView"
+            android:layout_width="@dimen/cp_hue_view_width"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/cp_preview_right_margin">
+
+        <com.sssprog.colorpicker.ColorPreview
+            android:id="@+id/cp_oldColor"
+            style="@style/cp_color_preview"
+            android:background="#ffff0000"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/cp_preview_right_arrow"/>
+
+        <com.sssprog.colorpicker.ColorPreview
+            android:id="@+id/cp_newColor"
+            style="@style/cp_color_preview"
+            android:background="#ff00ff00"/>
+
+    </LinearLayout>
+</LinearLayout>

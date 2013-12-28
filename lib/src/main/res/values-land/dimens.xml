@@ -1,0 +1,5 @@
+<resources>
+
+    <dimen name="cp_color_picker_height">200dp</dimen>
+
+</resources>

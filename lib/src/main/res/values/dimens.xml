@@ -1,0 +1,8 @@
+<resources>
+
+    <dimen name="cp_hue_view_width">60dp</dimen>
+    <dimen name="cp_hue_cursor_padding">5dp</dimen>
+    <dimen name="cp_preview_right_margin">65dp</dimen>
+    <dimen name="cp_color_picker_height">300dp</dimen>
+
+</resources>
