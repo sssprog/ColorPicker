@@ -2,5 +2,7 @@
 <resources>
 
     <string name="app_name">Color Picker Sample</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

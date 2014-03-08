@@ -4,5 +4,7 @@
     <dimen name="cp_hue_cursor_padding">5dp</dimen>
     <dimen name="cp_preview_right_margin">65dp</dimen>
     <dimen name="cp_color_picker_height">300dp</dimen>
+    <dimen name="cp_default_wheel_border_width">20dp</dimen>
+    <dimen name="color_picker_additional_portrait_height">70dp</dimen>
 
 </resources>

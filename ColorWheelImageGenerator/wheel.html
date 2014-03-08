@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<canvas id="wheelCanvas"
+        width="1000"
+        height="1000"/>
+
+<script>
+
+    var canvas = document.getElementById("wheelCanvas");
+    var context = canvas.getContext('2d');
+    var radius = canvas.width / 2;
+
+    function drawPixel(x, y, rgb) {
+        var id = context.createImageData(1, 1);
+        var d = id.data;
+        d[0] = rgb.r;
+        d[1] = rgb.g;
+        d[2] = rgb.b;
+        d[3] = 255;
+        context.putImageData(id, x, y);
+    }
+
+    function putInsideInterval(value, start, end) {
+//        value = Math.min(value, start);
+//        value = Math.max(value, end);
+        if (value < start) {
+            value = start;
+        }
+        if (value > end) {
+            value = end;
+        }
+        return value;
+    }
+
+    function HSVtoRGB(h, s, v) {
+        var r, g, b, i, f, p, q, t;
+        if (h && s === undefined && v === undefined) {
+            s = h.s, v = h.v, h = h.h;
+        }
+        i = Math.floor(h * 6);
+        f = h * 6 - i;
+        p = v * (1 - s);
+        q = v * (1 - f * s);
+        t = v * (1 - (1 - f) * s);
+        switch (i % 6) {
+            case 0: r = v, g = t, b = p; break;
+            case 1: r = q, g = v, b = p; break;
+            case 2: r = p, g = v, b = t; break;
+            case 3: r = p, g = q, b = v; break;
+            case 4: r = t, g = p, b = v; break;
+            case 5: r = v, g = p, b = q; break;
+        }
+        return {
+            r: Math.floor(r * 255),
+            g: Math.floor(g * 255),
+            b: Math.floor(b * 255)
+        };
+    }
+
+    for (var i = 0; i < canvas.width; i++) {
+        for (var j = 0; j < canvas.height; j++) {
+
+            var x = i - radius;
+            var y = -(j - radius);
+            if (x == 0) {
+                x = 0.0001;
+            }
+            if (y == 0) {
+                y = 0.0001;
+            }
+            var distance = Math.sqrt(x * x + y * y);
+            var alpha = Math.acos(Math.abs(x) / distance);
+            if (x < 0 && y > 0) {
+                alpha = Math.PI - alpha;
+            } else if (x < 0 && y < 0) {
+                alpha += Math.PI;
+            } else if (x > 0 && y < 0) {
+                alpha = 2 * Math.PI - alpha;
+            }
+
+            var hue = alpha / Math.PI / 2;
+
+            var color0 = putInsideInterval(hue, 0, 1);
+            var color1 = putInsideInterval(distance / radius, 0, 1);
+            var rgb = HSVtoRGB(color0, color1, 1);
+//            console.log(color0, color1, rgb);
+
+            drawPixel(i, j, rgb);
+        }
+    }
+
+    
+    var img = canvas.toDataURL("image/png");
+    document.write('<img src="'+img+'"/>');
+</script>
+
+</body>
+</html>

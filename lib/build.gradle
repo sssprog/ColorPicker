@@ -34,7 +34,7 @@ uploadArchives {
             repository(url: "file:///Users/sergu/projects/maven_local_repo")
             pom.groupId = 'com.sssprog'
             pom.artifactId = 'colorpicker'
-            pom.version = '0.1.0'
+            pom.version = '1.0'
         }
     }
 }

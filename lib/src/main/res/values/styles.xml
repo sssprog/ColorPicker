@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="cp_default_wheel_border_color">#18ffffff</color>
 
     <style name="cp_color_preview">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_weight">1</item>
     </style>
+
+    <style name="cp_color_preview_wheel_dialog">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+
+    <declare-styleable name="ColorWheelView">
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="borderColor" format="color"/>
+    </declare-styleable>
 
 </resources>
